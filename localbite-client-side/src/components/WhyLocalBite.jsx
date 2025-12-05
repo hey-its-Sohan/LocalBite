@@ -1,4 +1,3 @@
-// src/components/sections/WhyLocalBite.jsx
 import React from "react";
 import { HeartHandshake, Leaf, PiggyBank } from "lucide-react";
 
@@ -39,8 +38,8 @@ const WhyLocalBite = () => {
             Why LocalBite Works
           </h2>
           <p className="mx-auto max-w-2xl text-sm sm:text-base text-muted-foreground">
-            We believe in the power of food to bring people together, reduce waste,
-            and strengthen local economies.
+            We believe in the power of food to bring people together, reduce
+            waste, and strengthen local economies.
           </p>
         </div>
 

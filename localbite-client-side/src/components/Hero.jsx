@@ -1,11 +1,11 @@
-// src/components/sections/Hero.jsx
 import React from "react";
 import { Users, MapPin, Star } from "lucide-react";
+import { Link } from "react-router";
 
 const Hero = () => {
   return (
     <section
-      className="bg-background pt-10 pb-16 lg:pt-16 lg:pb-24"
+      className="bg-background py-16 lg:pt-16 lg:pb-24"
       aria-labelledby="hero-heading"
     >
       <div className="fix-alignment">
@@ -38,12 +38,12 @@ const Hero = () => {
 
             {/* CTAs */}
             <div className="flex flex-wrap items-center gap-4">
-              <button className="btn btn-primary h-12 rounded-lg border-none bg-primary px-6 text-sm font-semibold text-primary-foreground hover:bg-primary-hover">
+              <Link to={"/login"} className="btn-primary">
                 Join as Cook
-              </button>
-              <button className="btn btn-outline h-12 rounded-lg border-border bg-card px-6 text-sm font-semibold text-neutral hover:bg-muted">
+              </Link>
+              <Link to={"/all-foods"} className="btn-secondary">
                 Browse Meals
-              </button>
+              </Link>
             </div>
 
             {/* Stats row */}
@@ -51,13 +51,15 @@ const Hero = () => {
               <div className="flex items-center gap-2">
                 <Users className="h-4 w-4 text-success" />
                 <span>
-                  <span className="font-semibold text-neutral">2,300+</span> meals shared
+                  <span className="font-semibold text-neutral">2,300+</span>{" "}
+                  meals shared
                 </span>
               </div>
               <div className="flex items-center gap-2">
                 <Star className="h-4 w-4 fill-warning text-warning" />
                 <span>
-                  <span className="font-semibold text-neutral">4.9</span> average rating
+                  <span className="font-semibold text-neutral">4.9</span>{" "}
+                  average rating
                 </span>
               </div>
               <div className="flex items-center gap-2">
@@ -69,8 +71,8 @@ const Hero = () => {
 
           {/* Right: image card */}
           <div className="flex justify-center lg:justify-end">
-            <div className="card w-full max-w-md rounded-[2rem] border border-border bg-card shadow-xl">
-              <figure className="overflow-hidden rounded-[2rem]">
+            <div className="card w-full max-w-md rounded-4xl border border-border bg-card shadow-xl">
+              <figure className="overflow-hidden rounded-4xl">
                 <div
                   className="aspect-square w-full bg-cover bg-center"
                   style={{
