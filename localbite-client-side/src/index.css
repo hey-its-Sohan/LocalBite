@@ -98,7 +98,7 @@
 }
 
 .fix-alignment {
-  @apply max-w-screen-xl mx-auto px-5 lg:px-0;
+  @apply max-w-screen-xl mx-auto px-6 lg:px-0;
 }
 .btn-primary {
   @apply btn btn-primary outline-none border-none text-white rounded-lg;
