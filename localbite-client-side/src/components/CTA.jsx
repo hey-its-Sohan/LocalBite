@@ -1,15 +1,12 @@
-// src/components/sections/CTA.jsx
 import React from "react";
+import { Link } from "react-router";
 
 const CTA = () => {
   return (
-    <section
-      className="bg-background py-16 sm:py-20 lg:py-24"
-      aria-labelledby="cta-heading"
-    >
+    <section className=" py-16 sm:py-20 lg:py-24" aria-labelledby="cta-heading">
       <div className="fix-alignment">
         <div
-          className="relative overflow-hidden rounded-[2rem] border border-accent/30 bg-accent text-accent-foreground shadow-xl"
+          className="relative overflow-hidden rounded-4xl  bg-accent text-accent-foreground shadow-xl"
           style={{ backgroundImage: "var(--gradient-hero)" }}
         >
           {/* Glow blobs */}
@@ -23,18 +20,21 @@ const CTA = () => {
               Join the LocalBite Community Today!
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-sm sm:text-base text-accent-foreground/80">
-              Whether you&apos;re a passionate cook or a hungry neighbor, there&apos;s a
-              place for you at our table. Share meals, meet people, and make a
-              difference on your street.
+              Whether you&apos;re a passionate cook or a hungry neighbor,
+              there&apos;s a place for you at our table. Share meals, meet
+              people, and make a difference on your street.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-              <button className="btn btn-primary h-12 rounded-full border-none bg-primary px-6 text-sm font-semibold text-primary-foreground hover:bg-primary-hover">
+              <Link to={"/login"} className=" btn-primary  ">
                 Join as Cook
-              </button>
-              <button className="btn btn-outline h-12 rounded-full border border-accent-foreground/40 bg-transparent px-6 text-sm font-semibold text-accent-foreground hover:bg-accent-foreground/10">
+              </Link>
+              <Link
+                to={"/all-foods"}
+                className="btn btn-outline rounded-lg border border-accent-foreground/40 bg-transparent px-6 text-sm font-semibold text-accent-foreground hover:bg-accent-foreground/10"
+              >
                 Browse Meals
-              </button>
+              </Link>
             </div>
           </div>
         </div>

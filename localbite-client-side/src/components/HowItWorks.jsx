@@ -1,4 +1,3 @@
-// src/components/sections/HowItWorks.jsx
 import React from "react";
 import { Soup, MapPin, MessageSquareMore } from "lucide-react";
 
@@ -27,7 +26,7 @@ const HowItWorks = () => {
   return (
     <section
       id="how-it-works"
-      className="bg-muted/40 py-16 sm:py-20 lg:py-24"
+      className=" py-16 sm:py-20 lg:py-24"
       aria-labelledby="how-heading"
     >
       <div className="fix-alignment">
@@ -39,8 +38,8 @@ const HowItWorks = () => {
             How It Works
           </h2>
           <p className="mx-auto max-w-2xl text-sm sm:text-base text-muted-foreground">
-            Getting started is simple. Share your culinary creations or discover delicious
-            homemade food in your neighborhood in just a few steps.
+            Getting started is simple. Share your culinary creations or discover
+            delicious homemade food in your neighborhood in just a few steps.
           </p>
         </div>
 
