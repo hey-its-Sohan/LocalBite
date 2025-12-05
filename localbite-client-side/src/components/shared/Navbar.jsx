@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, NavLink } from "react-router";
+import logo from "../../assets/logo.png";
 
 const Navbar = () => {
   const navItems = (
@@ -73,9 +74,10 @@ const Navbar = () => {
           </div>
           <Link
             to={"/"}
-            className=" text-xl md:text-3xl font-bold text-primary"
+            className=" flex items-center text-xl md:text-3xl font-bold text-primary"
           >
-            LocalBite
+            <img src={logo} alt="LocalBite Logo" className="w-10 inline mr-2" />
+            <span className="hidden md:block">LocalBite</span>
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
