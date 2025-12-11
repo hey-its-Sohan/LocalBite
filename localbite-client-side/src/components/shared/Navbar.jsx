@@ -67,7 +67,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex="-1"
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content bg-background text-foreground rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
               {navItems}
             </ul>
@@ -84,8 +84,12 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{navItems}</ul>
         </div>
         <div className="navbar-end gap-2">
-          <Link className=" btn-primary">Login</Link>
-          <Link className=" btn-secondary">Sign Up</Link>
+          <Link to={"/login"} className=" btn-primary">
+            Login
+          </Link>
+          <Link to={"/signup"} className=" btn-secondary">
+            Sign Up
+          </Link>
         </div>
       </div>
     </div>
