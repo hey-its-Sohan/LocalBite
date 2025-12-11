@@ -22,7 +22,7 @@ export const routes = createBrowserRouter([
         Component: AllFoods,
       },
       {
-        path: "/about-us",
+        path: "/about",
         Component: AboutUs,
       },
       {
