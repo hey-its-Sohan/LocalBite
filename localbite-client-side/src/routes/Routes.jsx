@@ -14,6 +14,9 @@ import Profile from "../dashboard/DashboardComponents/Profile";
 import Orders from "../dashboard/DashboardComponents/Orders";
 import MyOrders from "../dashboard/DashboardComponents/MyOrders";
 import Community from "../dashboard/DashboardComponents/Community";
+import CooksReview from "../dashboard/DashboardComponents/CooksReview";
+
+
 
 export const routes = createBrowserRouter([
   {
@@ -75,6 +78,10 @@ export const routes = createBrowserRouter([
       {
         path: "/dashboard/profile",
         Component: Profile,
+      },
+      {
+        path: "/dashboard/cooksreview",
+        Component: CooksReview,
       },
     ],
   },
