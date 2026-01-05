@@ -56,7 +56,7 @@ const DashboardLayout = () => {
 
   // Protect route - only allow cook or foodie roles to access dashboard
   useEffect(() => {
-    if (!roleLoading && role && !["cook", "foodie"].includes(role)) {
+    if (!roleLoading && role && !["cook", "foodie", "admin"].includes(role)) {
       navigate("/");
     }
   }, [role, roleLoading, navigate]);
@@ -74,12 +74,12 @@ const DashboardLayout = () => {
   if (loading || roleLoading || !user) return <Loading />;
 
   // Don't render dashboard if user is not a cook or foodie
-  if (!["cook", "foodie"].includes(role)) return null;
+  if (!["cook", "foodie", "admin"].includes(role)) return null;
 
   return (
-    <div className="flex flex-col min-h-screen bg-background">
+    <div className="flex flex-col min-h-screen bg-background ">
       {/* Top Navbar */}
-      <header className="sticky top-0 z-40 bg-card border-b border-border">
+      <header className="sticky top-0 z-40 bg-card border-b border-border ">
         <div className="flex items-center justify-between px-6 py-4">
           {/* Left */}
           <div className="flex items-center gap-4">
@@ -102,23 +102,10 @@ const DashboardLayout = () => {
                 <p className="text-xs text-muted-foreground">Dashboard</p>
               </div>
             </NavLink>
-
-            <div className="hidden md:block relative">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
-              <input
-                placeholder="Search dishes, cooks..."
-                className="pl-10 pr-4 py-2 w-64 rounded-lg bg-muted border border-border focus:ring-2 focus:ring-primary/40"
-              />
-            </div>
           </div>
 
           {/* Right */}
           <div className="flex items-center gap-4">
-            <button className="p-2 rounded-lg hover:bg-muted relative">
-              <Bell />
-              <span className="absolute top-2 right-2 w-2 h-2 bg-error rounded-full" />
-            </button>
-
             {/* User dropdown */}
             <div className="relative">
               <button
@@ -164,7 +151,7 @@ const DashboardLayout = () => {
       <div className="flex flex-1">
         {/* Sidebar */}
         <aside
-          className={`fixed md:relative z-40 w-64 bg-card border-r border-border p-6 transition-transform ${
+          className={`fixed md:relative z-20 w-64 bg-card border-r border-border p-6 transition-transform ${
             sidebarOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
           }`}
         >
@@ -173,18 +160,15 @@ const DashboardLayout = () => {
               <LayoutDashboard /> Dashboard
             </NavLink>
 
-            {role === "foodie" && (
+            {(role === "foodie" || role === "admin") && (
               <>
                 <NavLink to="/dashboard/my-orders" className={linkClasses}>
                   <ShoppingBag /> My Orders
                 </NavLink>
-                <NavLink to="/dashboard/insights" className={linkClasses}>
-                  <Users /> Insights
-                </NavLink>
               </>
             )}
 
-            {role === "cook" && (
+            {(role === "cook" || role == "admin") && (
               <>
                 <NavLink to="/dashboard/my-dishes" className={linkClasses}>
                   <Utensils /> My Dishes
@@ -206,13 +190,16 @@ const DashboardLayout = () => {
                 <NavLink to="/dashboard/users" className={linkClasses}>
                   <Users /> All Users
                 </NavLink>
-                <NavLink to="/dashboard/analytics" className={linkClasses}>
-                  <BarChart3 /> Analytics
-                </NavLink>
-                <NavLink to="/dashboard/manage" className={linkClasses}>
-                  <Settings /> Manage Platform
+
+                <NavLink to="/dashboard/verify-request" className={linkClasses}>
+                  <Settings /> Verify Request
                 </NavLink>
               </>
+            )}
+            {role !== "admin" && (
+              <NavLink to="/dashboard/verify" className={linkClasses}>
+                <Settings /> Verify
+              </NavLink>
             )}
 
             <NavLink to="/dashboard/profile" className={linkClasses}>
@@ -220,17 +207,15 @@ const DashboardLayout = () => {
             </NavLink>
           </nav>
 
-          {/* Help */}
-          <div className="mt-8 p-4 bg-primary/5 rounded-lg">
-            <div className="flex gap-3">
-              <HelpCircle className="text-primary" />
-              <div>
-                <p className="text-sm font-medium">Need help?</p>
-                <p className="text-xs text-muted-foreground">
-                  Contact LocalBite support
-                </p>
-              </div>
-            </div>
+          {/* Logout Button */}
+          <div className="mt-8 pt-6 border-t border-border">
+            <button
+              onClick={handleSignOut}
+              className="flex items-center gap-3  text-error transition-colors w-full px-3 py-2 rounded-lg hover:bg-muted"
+            >
+              <LogOut size={18} />
+              <span className="font-medium">Logout</span>
+            </button>
           </div>
         </aside>
 
@@ -243,9 +228,12 @@ const DashboardLayout = () => {
         )}
 
         {/* Main */}
-        <main className="flex-1 p-6">
-          <div className="bg-card border border-border rounded-xl p-6">
-            <Outlet />
+        <main className="flex-1 px-4 md:px-6 lg:px-8 py-6 overflow-x-hidden">
+          <div className="max-w-full">
+            {/* Page Content */}
+            <div className="bg-card border border-border rounded-xl p-6">
+              <Outlet />
+            </div>
           </div>
         </main>
       </div>

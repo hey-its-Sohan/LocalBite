@@ -51,6 +51,7 @@ const Navbar = () => {
           About
         </NavLink>
       </li>
+
       {user && (
         <li className="text-lg text-foreground">
           <NavLink
