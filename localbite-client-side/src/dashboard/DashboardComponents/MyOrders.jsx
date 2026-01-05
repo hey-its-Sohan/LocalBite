@@ -56,7 +56,9 @@ const MyOrders = () => {
   // Confirm order
   const handleConfirm = async (orderId) => {
     try {
-      await axios.post(`http://localhost:3000/orders/${orderId}/foodie/confirm`);
+      await axios.post(
+        `http://localhost:3000/orders/${orderId}/foodie/confirm`
+      );
       if (userData?._id) {
         fetchOrders(userData._id);
       }
@@ -73,9 +75,12 @@ const MyOrders = () => {
     if (!reason) return;
 
     try {
-      await axios.post(`http://localhost:3000/orders/${orderId}/foodie/cancel`, {
-        reason,
-      });
+      await axios.post(
+        `http://localhost:3000/orders/${orderId}/foodie/cancel`,
+        {
+          reason,
+        }
+      );
       if (userData?._id) {
         fetchOrders(userData._id);
       }
@@ -98,7 +103,10 @@ const MyOrders = () => {
         color: "bg-primary text-white",
       },
       confirmed: { label: "Confirmed", color: "bg-success text-white" },
-      cook_cancelled: { label: "Cancelled by Cook", color: "bg-error text-white" },
+      cook_cancelled: {
+        label: "Cancelled by Cook",
+        color: "bg-error text-white",
+      },
       foodie_cancelled: {
         label: "Cancelled by You",
         color: "bg-error text-white",
@@ -183,7 +191,8 @@ const MyOrders = () => {
                         {getStatusBadge(order.status)}
                       </div>
                       <p className="text-sm text-muted-foreground">
-                        Order Code: <span className="font-mono">{order.orderCode}</span>
+                        Order Code:{" "}
+                        <span className="font-mono">{order.orderCode}</span>
                       </p>
                     </div>
                   </div>
@@ -226,13 +235,17 @@ const MyOrders = () => {
                       {order.confirmedAt && (
                         <div className="flex items-center gap-2 text-sm text-muted-foreground">
                           <Check className="w-4 h-4 text-success" />
-                          <span>Confirmed: {formatDate(order.confirmedAt)}</span>
+                          <span>
+                            Confirmed: {formatDate(order.confirmedAt)}
+                          </span>
                         </div>
                       )}
                       {order.completedAt && (
                         <div className="flex items-center gap-2 text-sm text-muted-foreground">
                           <Check className="w-4 h-4 text-success" />
-                          <span>Completed: {formatDate(order.completedAt)}</span>
+                          <span>
+                            Completed: {formatDate(order.completedAt)}
+                          </span>
                         </div>
                       )}
                     </div>
@@ -281,9 +294,9 @@ const MyOrders = () => {
                     <span className="text-2xl font-bold text-primary">
                       {order.mealSnapshot?.price === 0
                         ? "Free"
-                        : `${(order.mealSnapshot?.price || 0) * order.quantity} ${
-                            order.mealSnapshot?.currency || "BDT"
-                          }`}
+                        : `${
+                            (order.mealSnapshot?.price || 0) * order.quantity
+                          } ${order.mealSnapshot?.currency || "BDT"}`}
                     </span>
                   </div>
 
@@ -331,8 +344,7 @@ const MyOrders = () => {
                       <div className="flex items-center gap-2 text-sm text-error">
                         <AlertCircle className="w-4 h-4" />
                         <span>
-                          {order.cancelInfo?.reason ||
-                            "Order was cancelled"}
+                          {order.cancelInfo?.reason || "Order was cancelled"}
                         </span>
                       </div>
                     )}
