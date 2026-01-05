@@ -3,20 +3,15 @@ import axios from "axios";
 import Loading from "../../components/Loading";
 import {
   Trash2,
-  CheckCircle,
   XCircle,
   User,
-  Mail,
   Shield,
   Calendar,
-  MoreVertical,
   Search,
   Filter,
-  Eye,
   UserCheck,
   UserX,
   AlertTriangle,
-  Download,
   RefreshCw,
 } from "lucide-react";
 
@@ -369,24 +364,11 @@ const AllUsers = () => {
                   <td className="px-4 py-4">
                     <div className="flex justify-end gap-2">
                       <button
-                        onClick={() => console.log("View user:", user.uid)}
-                        className="p-2 hover:bg-muted rounded-lg transition-colors"
-                        title="View Details"
-                      >
-                        <Eye className="w-4 h-4 text-muted-foreground" />
-                      </button>
-                      <button
                         onClick={() => deleteUser(user.uid)}
                         className="p-2 hover:bg-error/10 rounded-lg transition-colors group"
                         title="Delete User"
                       >
                         <Trash2 className="w-4 h-4 text-error group-hover:text-error/80" />
-                      </button>
-                      <button
-                        className="p-2 hover:bg-muted rounded-lg transition-colors"
-                        title="More Options"
-                      >
-                        <MoreVertical className="w-4 h-4 text-muted-foreground" />
                       </button>
                     </div>
                   </td>
